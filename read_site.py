@@ -23,6 +23,7 @@ class Site(object):
         self.get_necessary_images(self.num_min)
 
     def get_next_page(self):
+        print('Reading Next Page')
         self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
 
@@ -35,7 +36,9 @@ class Site(object):
                 self.lst_img_path.append(aux_path)
 
     def count_images(self):
-        return len(self.lst_img_path)
+        n = len(self.lst_img_path)
+        print('Current number of images is: {}'.format(n))
+        return n
 
     def get_necessary_images(self, num_min):
         self.get_lst_img_path()

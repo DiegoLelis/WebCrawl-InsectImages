@@ -7,7 +7,6 @@ root = 'images'
 
 def save_images(img_lst, folder):
     for img_name in img_lst:
-        print('Fetching: {}'.format(img_name)
         size_img_name = img_name[-1:0:-1].find('/')
         name = img_name[len(img_name)-size_img_name:]
         directory = '{}/{}'.format(root,folder)
@@ -18,7 +17,7 @@ def save_images(img_lst, folder):
         if not os.path.isfile(name_path):
             with open(name_path, 'wb') as img_file:
                 img_file.write(urllib.request.urlopen(img_name).read())
-                print('Creating File: {}'.format(name_path))
+                print('Saving Image: {} in: {} '.format(img_name, name_path))
 
 
 if __name__ == '__main__':
