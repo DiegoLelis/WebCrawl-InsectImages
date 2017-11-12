@@ -2,19 +2,27 @@
 
 from read_site import Site
 from save_images import save_images
+from specie import Specie
 
 # This number specify what is the minimum number of images necessary, then the software will paginate the website ultil it reaches the min number.
-NUM_MIN = 5
+NUM_MIN = 140
 
-#This specifies what is the url to search for images (It will discard images from the website that are not relevant)
-# URL = 'https://www.insectimages.org/browse/taxthumb.cfm?order=369' #cockroaches
-URL = 'https://www.insectimages.org/browse/taxthumb.cfm?order=159' #Orthoptera
+cockroaches = Specie('https://www.insectimages.org/browse/taxthumb.cfm?order=369', 'cockroaches')
+orthoptera = Specie('https://www.insectimages.org/browse/taxthumb.cfm?order=159', 'orthoptera')
+neuroptera = Specie('https://www.insectimages.org/browse/taxthumb.cfm?order=152', 'neuroptera')
+mantodea = Specie('https://www.insectimages.org/browse/taxthumb.cfm?order=139', 'mantodea')
+isoptera = Specie('https://www.insectimages.org/browse/taxthumb.cfm?order=121', 'isoptera')
+odonata = Specie('https://www.insectimages.org/browse/taxthumb.cfm?order=155', 'odonata')
 
-#This specifies the folder in wich the mages should be saved according to the species
-# FOLDER = 'cockroaches'
-FOLDER = 'orthoptera'
+lst_specie = [cockroaches,orthoptera,neuroptera,mantodea,isoptera,odonata]
+
+def down_lst_img(specie, num_min = NUM_MIN):
+    site = Site(specie.url, num_min)
+    site.browser.quit()
+    save_images(site.lst_img_path, specie.folder)
 
 if __name__ == "__main__":
-    site = Site(URL, NUM_MIN)
-    save_images(site.lst_img_path, FOLDER)
-    site.browser.quit()
+    for specie in lst_specie:
+        down_lst_img(specie)
+
+
