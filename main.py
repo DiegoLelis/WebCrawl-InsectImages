@@ -7,10 +7,12 @@ from save_images import save_images
 NUM_MIN = 5
 
 #This specifies what is the url to search for images (It will discard images from the website that are not relevant)
-URL = 'https://www.insectimages.org/browse/taxthumb.cfm?order=369' #cockroaches
+# URL = 'https://www.insectimages.org/browse/taxthumb.cfm?order=369' #cockroaches
+URL = 'https://www.insectimages.org/browse/taxthumb.cfm?order=159' #Orthoptera
 
 #This specifies the folder in wich the mages should be saved according to the species
-FOLDER = 'cockroaches'
+# FOLDER = 'cockroaches'
+FOLDER = 'orthoptera'
 
 if __name__ == "__main__":
     site = Site(URL, NUM_MIN)

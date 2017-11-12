@@ -10,7 +10,10 @@ def save_images(img_lst, folder):
         print(img_name)
         size_img_name = img_name[-1:0:-1].find('/')
         name = img_name[len(img_name)-size_img_name:]
-        name_path = '{}/{}/{}'.format(root,folder,name)
+        directory = '{}/{}'.format(root,folder)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        name_path = '{}/{}'.format(directory,name)
         if not os.path.isfile(name_path):
             with open(name_path, 'wb') as img_file:
                 img_file.write(urllib.request.urlopen(img_name).read())
