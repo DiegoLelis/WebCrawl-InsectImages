@@ -7,16 +7,18 @@ root = 'images'
 
 def save_images(img_lst, folder):
     for img_name in img_lst:
-        print(img_name)
+        print('Fetching: {}'.format(img_name)
         size_img_name = img_name[-1:0:-1].find('/')
         name = img_name[len(img_name)-size_img_name:]
         directory = '{}/{}'.format(root,folder)
         if not os.path.exists(directory):
             os.makedirs(directory)
+            print('Creating Directory: {}'.format(directory))
         name_path = '{}/{}'.format(directory,name)
         if not os.path.isfile(name_path):
             with open(name_path, 'wb') as img_file:
                 img_file.write(urllib.request.urlopen(img_name).read())
+                print('Creating File: {}'.format(name_path))
 
 
 if __name__ == '__main__':
